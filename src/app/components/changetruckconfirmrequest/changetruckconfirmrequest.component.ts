@@ -14,6 +14,7 @@ import { EROFS } from 'constants';
 })
 export class ChangetruckconfirmrequestComponent implements OnInit {
 
+
   constructor( private service: Service,private router: Router, private el: ElementRef, private ipcService: IpcService, private formBuilder: FormBuilder) { }
   SetTruckChangeDenominationsFormValues: FormGroup;
   ValletDenominationId:number;
@@ -134,15 +135,28 @@ export class ChangetruckconfirmrequestComponent implements OnInit {
   displayStyle = "none";
   displayStyleC = "none";
   displayStyleConfirm="none";
+  displayStylesubmit="none";
   dynamicText:string;
+  dynamicTextsubmit:string;
   openPopup() {
       this.displayStyle = "block";
   }
+  openPopup1() {
+    this.displayStylesubmit = "block";
+}
+  
   closePopup() {
-    if(this.dynamicText=="Saved Successfully"){
+    if(this.dynamicText=="Your Truck Change Request has been confirmed and Change Delivered Successfully to Store"){
       this.router.navigateByUrl('/homenav');
     }
       this.displayStyle = "none";
+      //this.router.navigateByUrl('/homenav');
+  }
+  closePopup1() {
+    if(this.dynamicTextsubmit=="Your Truck Change Request has been modified and Change Delivered Successfully"){
+      this.router.navigateByUrl('/homenav');
+    }
+      this.displayStylesubmit = "none";
       //this.router.navigateByUrl('/homenav');
   }
   closePopupCancel() {
@@ -619,8 +633,8 @@ export class ChangetruckconfirmrequestComponent implements OnInit {
   RaiserequestCencel(){
     this.IsmodelShow=false;
   }
-  editRequest(){
-    this.ModifyRequest="Save";
+  editRequest(){ 
+    this.ModifyRequest="Submit";
     let myTag1 = this.el.nativeElement.querySelector("div");
     var shift_elements = document.getElementsByClassName('main_safeDiv');
     let myTag2 = this.el.nativeElement.querySelector("div");
@@ -631,19 +645,24 @@ export class ChangetruckconfirmrequestComponent implements OnInit {
     this.confirmDisable=true;
     if(this.staticTotalValue==this.ModifynewTotalValue){
       newtotal[0].classList.remove('redNewTotalAdd');
+      this.dynamicTextsubmit="Your Truck Change Request has been modified and Change Delivered Successfully"
+           this.openPopup1();
       this.saveChangerequest();
     }
     else{
       if(this.ModifynewTotalValue!=0){
         if (newtotal.length > 0) {
-          newtotal[0].classList.add('redNewTotalAdd');
+          newtotal[0].classList.add('redNewTotalAdd')
         }
         this.dynamicText="Change request not balanced.. Please Balance";
         this.openPopup();
+        // this.dynamicTextsubmit="Your Truck Change Request has been modified and Change Delivered Successfully"
+        // this.openPopup1();
       }
       
     }
   }
+  
 
   Valletchangedoordenominations() {
     this.service.getStandBankDetailsOnType("MAINSAFE").subscribe(data => {
@@ -771,7 +790,7 @@ SaveMainsafeChangerequestdata(){
       data=>{
       localStorage.setItem('OrderStatus',"Delivered");
       this.SaveMainsafeChangerequestdata();
-      this.dynamicText="Saved Successfully";
+      this.dynamicText="Your Truck Change Request has been confirmed and Change Delivered Successfully to Store";
       this.openPopup();
       
       this.loaderHide();
