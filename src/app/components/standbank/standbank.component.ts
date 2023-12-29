@@ -523,7 +523,7 @@ export class StandbankComponent implements OnInit {
   }
 
   //Enable Screen start here..
-  enableStandbank(type: string) {
+  enableStandbank(type: string) {debugger;
     if (type == "SHIFTMANAGER") {
       if (this.ShiftmanagerText == "Save") {
         this.ChangeRequest(type);

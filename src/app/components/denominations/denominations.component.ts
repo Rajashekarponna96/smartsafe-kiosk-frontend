@@ -152,7 +152,7 @@ loaderHide(){
     }
     );
   }
-  sendRequest(){
+  sendRequest(){ debugger;
     this.loaderShow();
     this.truckChangeRequestDto.cents=this.selectedP;
     this.truckChangeRequestDto.nickels=this.selectedN;
@@ -171,15 +171,18 @@ loaderHide(){
     this.truckChangeRequestDto.updatedByUser=this.useriD;
     this.truckChangeRequestDto.updatedTime=Date();
     this.service.SavetructChangeRequest(this.truckChangeRequestDto).subscribe(
-    data=>{
-      localStorage.setItem('OrderStatus',"Ordered");
-      this.dynamicText="Change Request Raised to Truck Vendor Successfully.";
+     data => {
+      localStorage.setItem('OrderStatus', 'Ordered');
+      console.log('OrderStatus set to Ordered');
+      this.dynamicText = 'Change Request Raised to Truck Vendor Successfully.';
       this.openPopup();
       this.loaderHide();
-    },
-    error=>{
+  },
+  error => {
+      console.error('Error:', error);
       this.loaderHide();
-    }
+  }
+  
     );
   }
   processInsertBills() {

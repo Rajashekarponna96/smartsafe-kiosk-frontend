@@ -95,7 +95,7 @@ export class ChangerequestComponent implements OnInit {
 
   newTotalValue: number = 0;
 
-  MainTotalValue: number = 0
+  MainTotalValue: number = 0;
 
   DepositedTotalValue: number = 0;
 
@@ -434,7 +434,7 @@ export class ChangerequestComponent implements OnInit {
 
         })
 
-        this.MainTotalValue = (this.standbankresponceData.cents) + (this.standbankresponceData.nickels) + (this.standbankresponceData.dimes) + (this.standbankresponceData.quarters) + (this.standbankresponceData.den_1$) + (this.standbankresponceData.den_5$) + (this.standbankresponceData.den_10$) + (this.standbankresponceData.den_20$) + (this.standbankresponceData.den_50$) + (this.standbankresponceData.den_100$);
+        this.MainTotalValue = (this.standbankresponceData.cents) + (this.standbankresponceData.nickels) + (this.standbankresponceData.dimes) + (this.standbankresponceData.quarters) + (this.standbankresponceData.den_1$) + (this.standbankresponceData.den_5$) + (this.standbankresponceData.den_10$) + (this.standbankresponceData.den_20$) + (this.standbankresponceData.den_50$) + (this.standbankresponceData.den_100$); debugger;
 
       }
 
@@ -731,7 +731,7 @@ export class ChangerequestComponent implements OnInit {
 
     this.MainTotalValue = (this.ValletPennies) + (this.valletNickels) + (this.valletDimes) + (this.valletQuarters) + parseInt(this.SetChangeDenominationsFormValues.get('MainsafeOneDollarFormValues')?.value.split('$')[1]) + parseInt(this.SetChangeDenominationsFormValues.get('MainsafeFiveDollarFormValues')?.value.split('$')[1]) + parseInt(this.SetChangeDenominationsFormValues.get('MainsafeTenDollarFormValues')?.value.split('$')[1]) + parseInt(this.SetChangeDenominationsFormValues.get('MainsafeTwentyDollarFormValues')?.value.split('$')[1]) + parseInt(this.SetChangeDenominationsFormValues.get('MainsafeFiftyDollarFormValue')?.value.split('$')[1]) + parseInt(this.SetChangeDenominationsFormValues.get('MainsafeHundredDollarFormValue')?.value.split('$')[1]);
   }
-  async Raiserequest() {
+  async Raiserequest() { debugger;
     let myTag1 = this.el.nativeElement.querySelector("div");
     var newtotal = document.getElementsByClassName('redNewTotal');
     let myTag2 = this.el.nativeElement.querySelector("div");
@@ -918,13 +918,14 @@ export class ChangerequestComponent implements OnInit {
               }
 
               this.initFormGroup();
-
+              await this.Valletchangedoordenominations();
             }
             else {
               if (shift_elements.length > 0) {
                 shift_elements[0].classList.remove('shift_managerDiv');
               }
               this.initFormGroup();
+              
             }
           }
           else {
