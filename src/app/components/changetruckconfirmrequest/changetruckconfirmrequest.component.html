@@ -528,6 +528,7 @@
         </button> 
         <!-- <button type="button" class="btn cprimary_btn" (click)="gotoPinPart()"></button> -->
         <button type="button" class="btn cprimary_btn" (click)="editRequest()">{{ModifyRequest}}</button>
+        <button type="button" class="btn cprimary_btn" (click)="openMainsafeLock()" [disabled]="isDone">Open MainSafe </button>
         <button type="button" class="btn cprimary_btn" (click)="CancelRequestT()">Cancel</button>
     </div>
     <ngx-loader [show]="show" [fullScreen] = "fullScreen" [template]="template"> Loading... </ngx-loader>

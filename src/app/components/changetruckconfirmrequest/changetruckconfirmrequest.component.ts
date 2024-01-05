@@ -147,14 +147,14 @@ export class ChangetruckconfirmrequestComponent implements OnInit {
   
   closePopup() {
     if(this.dynamicText=="Your Truck Change Request has been confirmed and Change Delivered Successfully to Store"){
-      this.router.navigateByUrl('/homenav');
+      this.router.navigateByUrl('/changetruckconfirmrequest');
     }
       this.displayStyle = "none";
       //this.router.navigateByUrl('/homenav');
   }
   closePopup1() {
     if(this.dynamicTextsubmit=="Your Truck Change Request has been modified and Change Delivered Successfully"){
-      this.router.navigateByUrl('/homenav');
+      this.router.navigateByUrl('/changetruckconfirmrequest');
     }
       this.displayStylesubmit = "none";
       //this.router.navigateByUrl('/homenav');
@@ -646,6 +646,7 @@ export class ChangetruckconfirmrequestComponent implements OnInit {
     if(this.staticTotalValue==this.ModifynewTotalValue){
       newtotal[0].classList.remove('redNewTotalAdd');
       this.dynamicTextsubmit="Your Truck Change Request has been modified and Change Delivered Successfully"
+      this.isDone=false;
            this.openPopup1();
       this.saveChangerequest();
     }
@@ -791,13 +792,20 @@ SaveMainsafeChangerequestdata(){
       localStorage.setItem('OrderStatus',"Delivered");
       this.SaveMainsafeChangerequestdata();
       this.dynamicText="Your Truck Change Request has been confirmed and Change Delivered Successfully to Store";
+      this.isDone=false;
       this.openPopup();
-      
       this.loaderHide();
     },error=>{
       this.loaderHide();
     }
     );
   }
+  isDone:boolean=true;
+  openMainsafeLock(){
+    this.service.openLock('02').subscribe(data =>{
+      console.log(data);
+    })
+  }
+
 
 }
