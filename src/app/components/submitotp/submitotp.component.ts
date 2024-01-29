@@ -21,7 +21,6 @@ export class SubmitotpComponent implements OnInit {
   private apiUpdateUrl = 'https://api.quickbase.com/v1/records';
 
   constructor(private router:Router,private http: HttpClient) { }
- 
 
   displayStyle = "none";
   dynamicText:string;
@@ -145,49 +144,48 @@ closePopuppp() {
   }
 
   gotoTruckMain(){
-    this.router.navigateByUrl('/truckmain');
-//     if(this.pinValue!=null){
+    if(this.pinValue!=null){
      
-//     if(this.pinValue==this.code){
+    if(this.pinValue==this.code){
      
-//     const currentDateTimee = new Date();
-//     console.log("current...",currentDateTimee)
+    const currentDateTimee = new Date();
+    console.log("current...",currentDateTimee)
 
-//     const timeDifference = currentDateTimee.getTime() - this.originalDate.getTime();
-//     this.isLessThan30Seconds = timeDifference < 30000; // 30 seconds in milliseconds
+    const timeDifference = currentDateTimee.getTime() - this.originalDate.getTime();
+    this.isLessThan30Seconds = timeDifference < 30000; // 30 seconds in milliseconds
 
-//     console.log(this.isLessThan30Seconds);
+    console.log(this.isLessThan30Seconds);
 
-//     if(this.isLessThan30Seconds){
+    if(this.isLessThan30Seconds){
     
-//       this.getupdatesRecords().subscribe(
-//         response => {
-//           console.log("update",response);
-//         },
-//         error => {
-//           console.error(error);
-//         }
-//       );
-//     this.router.navigateByUrl('/truckmain');
-//     }else{
-//       this.dynamicTexttt = "Your 6-digit code validity got expired";
-//       this.openPopuppp();
-//       // alert('TimeOut');   
-//     }
-//   }
-//   else{
-//     this.dynamicText = "Please enter the valid OTP";
-//     this.openPopup();
-//   //  alert('Invalid Otp');
-//   }
+      this.getupdatesRecords().subscribe(
+        response => {
+          console.log("update",response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    this.router.navigateByUrl('/truckmain');
+    }else{
+      this.dynamicTexttt = "Your 6-digit code validity got expired";
+      this.openPopuppp();
+      // alert('TimeOut');   
+    }
+  }
+  else{
+    this.dynamicText = "Please enter the valid OTP";
+    this.openPopup();
+  //  alert('Invalid Otp');
+  }
 
-// }
-//   else{
-//     this.dynamicText = "Please enter the 6-digit code generated in mobile app";
-//     this.openPopup();
-//    // alert('Please enter the otp')
-//   }
-   }
+}
+  else{
+    this.dynamicText = "Please enter the 6-digit code generated in mobile app";
+    this.openPopup();
+   // alert('Please enter the otp')
+  }
+  }
 
   ngOnInit(): void {
     this.dynamicTextt = "To enter 6-digit code in Safe.";
