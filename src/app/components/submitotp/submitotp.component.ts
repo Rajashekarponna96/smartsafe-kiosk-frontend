@@ -60,7 +60,7 @@ closePopuppp() {
   getRecords(): Observable<any> {
     const headers = new HttpHeaders({
       'QB-Realm-Hostname': 'smartersafeusa.quickbase.com',
-      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_hsggci5b89xcdkz6ui6da4hbk5'
+      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_bmsenvidxsif7jdq7kawtkz4xgk'
     });
 
     const body = {
@@ -70,7 +70,7 @@ closePopuppp() {
     23,25,
   
   ],
-  "where": "{6.EX.'11111'}",
+  "where": "{6.EX.'1230456'}",
   "sortBy": [
     {
       "fieldId": 3,
@@ -124,7 +124,7 @@ closePopuppp() {
   getupdatesRecords(): Observable<any> {
     const headers = new HttpHeaders({
       'QB-Realm-Hostname': 'smartersafeusa.quickbase.com',
-      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_hsggci5b89xcdkz6ui6da4hbk5'
+      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_bmsenvidxsif7jdq7kawtkz4xgk'
     });
 
     const currentDateTime = this.getCurrentDateTime();
