@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/config/Model';
 import { Service } from 'src/app/services/Service';
@@ -17,6 +17,14 @@ export class PinpartComponent implements OnInit {
 
   constructor(private router: Router, private service:Service) { }
 
+  
+@ViewChild('passwordInput') passwordInput: any;
+
+
+ngAfterViewInit() {
+    // Focus on the password input field when the component is initialized
+    this.passwordInput.nativeElement.focus();
+  }
   ngOnInit(): void {
   }
   onlyNumberKey(event:any) {

@@ -13,7 +13,8 @@
                 <div class="row custom_pin_width">
                     <div class="col-12 col-md-12 col-lg-12">
                         <div class="">
-                            <input type="password" (keypress)="onlyNumberKey($event)" [matKeyboard]="'locale'" [value]="123456789" min="0" max="9999" maxlength="4" class="form-control" id="pin" aria-describedby="pin"  placeholder="PIN" [(ngModel)]="user.password"  name="pin">                                                    
+                            <!-- <input type="password" (keypress)="onlyNumberKey($event)" [matKeyboard]="'locale'" [value]="123456789" min="0" max="9999" maxlength="4" class="form-control" id="pin" aria-describedby="pin"  placeholder="PIN" [(ngModel)]="user.password"  name="pin">                                                     -->
+                            <input #passwordInput type="password" (keypress)="onlyNumberKey($event)" [matKeyboard]="'locale'" [value]="123456789" min="0" max="9999" maxlength="4" class="form-control" id="pin" aria-describedby="pin" placeholder="PIN" [(ngModel)]="user.password" name="pin">
                         </div>
                     </div>
                 </div>
