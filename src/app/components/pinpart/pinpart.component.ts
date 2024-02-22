@@ -13,6 +13,7 @@ export class PinpartComponent implements OnInit {
   pin: string;
   public user:User=new User();
   dynamicText:string;
+  insetbill: any;
 
 
   constructor(private router: Router, private service:Service) { }
@@ -41,7 +42,14 @@ ngAfterViewInit() {
   submitPin() {
     var page = localStorage.getItem("page");
       if (page === "insertbills") {
+        this.service.InsertBill_Start().subscribe(data =>{
+          console.log(data);
+          this.insetbill = data;
+          console.log("insert bill validator"+this.insetbill);
+        })
       this.router.navigateByUrl('/insertbills');
+     
+
     } else if (page === "adminaccess") {
       this.router.navigateByUrl('/adminaccess');
     }

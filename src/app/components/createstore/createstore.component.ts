@@ -84,6 +84,9 @@ export class CreatestoreComponent implements OnInit {
               this.store.storeName = item.storeName;
               localStorage.setItem("storeName",JSON.stringify(this.store.storeName))
               console.log("--------storename---------"+localStorage.getItem("storeName"))
+              this.store.serialNumber = item.serialNumber;
+              localStorage.setItem("serialNumber",JSON.stringify(this.store.serialNumber))
+             // console.log("--------serial number---------"+localStorage.getItem("serialNumber"))
               this.isDisable=item.configured;
               this.setDefaultStorevalues.patchValue({
                 StoreName: item.storeName,

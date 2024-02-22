@@ -198,4 +198,11 @@ export class Service {
     return this.httpClient.get<any>(EndPoints.fetching_update_withdraw_report(storeName))
   }
 
+  InsertBill_Start(){
+    return this.httpClient.get<any>(EndPoints.start_bill_insertion())
+  }
+
+  InsertBill_Disconnect(){
+    return this.httpClient.get<any>(EndPoints.disconnect_bill_insertion())
+  }
 }
