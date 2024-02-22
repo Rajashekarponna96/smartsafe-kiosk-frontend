@@ -173,4 +173,13 @@ export class EndPoints {
         return this.BASE_URL+"/reports/updatewithdrawsatus/"+storeName;
     }
 
+    public static  start_bill_insertion() {
+        return this.BASE_URL + "/start-bill-insertion";
+    }
+
+    public static  disconnect_bill_insertion() {
+        return this.BASE_URL + "/disconnect-bill-insertion";
+    }
+
+
 }

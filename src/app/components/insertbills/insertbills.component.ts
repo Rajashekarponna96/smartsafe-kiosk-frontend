@@ -21,6 +21,7 @@ export class InsertbillsComponent implements OnInit {
   transactionNumber:string;
 
   timerId: any;
+  insetbillDisconnect: any;
   constructor(private ipcService: IpcService, private service: Service, private router: Router) {
     this.userId = localStorage.getItem('userId');
     this.userName = localStorage.getItem('userName');
@@ -72,6 +73,11 @@ export class InsertbillsComponent implements OnInit {
         this.service.insertBillsReportDataa(this.transactionNumber,storeName).subscribe(data=>{
           data.name=localStorage.getItem('userName');
            this.ipcService.send("message",data);
+           this.service.InsertBill_Disconnect().subscribe(data =>{
+            console.log(data);
+            this.insetbillDisconnect = data;
+            console.log("insert bill validator"+this.insetbillDisconnect);
+          })
            this.router.navigateByUrl('/homenav'); 
         });
     })

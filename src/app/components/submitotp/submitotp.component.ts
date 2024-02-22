@@ -21,7 +21,7 @@ export class SubmitotpComponent implements OnInit {
   private apiUpdateUrl = 'https://api.quickbase.com/v1/records';
 
   constructor(private router:Router,private http: HttpClient) { }
-
+  StoreSerialNumber:any;
   displayStyle = "none";
   dynamicText:string;
   openPopup() {
@@ -31,6 +31,7 @@ export class SubmitotpComponent implements OnInit {
   closePopup() {
     this.displayStyle = "none";
 }
+
 
 //for main 
 displayStylee = "none";
@@ -60,20 +61,22 @@ closePopuppp() {
   getRecords(): Observable<any> {
     const headers = new HttpHeaders({
       'QB-Realm-Hostname': 'smartersafeusa.quickbase.com',
-      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_bmsenvidxsif7jdq7kawtkz4xgk'
+      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_hsggci5b89xcdkz6ui6da4hbk5'
     });
 
     const body = {
   "from": "bss3saex3",
   "select": [
-  3,
-    23,25,
+  7,
+  23,
+  26,
+  29
   
   ],
-  "where": "{6.EX.'1230456'}",
+  "where": "{6.EX."+this.StoreSerialNumber+"}",
   "sortBy": [
     {
-      "fieldId": 3,
+      "fieldId": 7,
       "order": "ASC"
     }
   ]
@@ -96,6 +99,9 @@ closePopuppp() {
       // alert('otp generated')
        this.originalDate = new Date(givenDateTime);
        console.log("cuuu..",this.originalDate)
+
+       this.StoreSerialNumber=localStorage.getItem("serialNumber");
+       console.log("----serial number in quickbase----"+this.StoreSerialNumber);
 
 
       },
@@ -124,7 +130,7 @@ closePopuppp() {
   getupdatesRecords(): Observable<any> {
     const headers = new HttpHeaders({
       'QB-Realm-Hostname': 'smartersafeusa.quickbase.com',
-      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_bmsenvidxsif7jdq7kawtkz4xgk'
+      'Authorization': 'QB-USER-TOKEN b6jrap_qcvz_0_hsggci5b89xcdkz6ui6da4hbk5'
     });
 
     const currentDateTime = this.getCurrentDateTime();
@@ -134,7 +140,7 @@ closePopuppp() {
 
       "data": [{
       
-          "3": {"value": "12"},
+          "7": {"value": "+this.StoreSerialNumber+"},
               "25": {"value": currentDateTime} 
       
       }]
@@ -188,7 +194,9 @@ closePopuppp() {
   }
 
   ngOnInit(): void {
+    this.StoreSerialNumber=localStorage.getItem("serialNumber");
     this.dynamicTextt = "To enter 6-digit code in Safe.";
+    
     this.openPopupp();
   }
 
