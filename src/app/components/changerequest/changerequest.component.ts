@@ -27,7 +27,7 @@ export class ChangerequestComponent implements OnInit {
   show = false;
   fullScreen = true;
   template = ``
-
+  insetbill: any;
   useriD: any;
   newPennies: number = 0;
   newNickels: number = 0;
@@ -767,6 +767,11 @@ export class ChangerequestComponent implements OnInit {
     }
   }
   next() {
+    this.service.InsertBill_Start().subscribe(data =>{
+      console.log(data);
+      this.insetbill = data;
+      console.log("insert bill validator"+this.insetbill);
+    })
     this.router.navigateByUrl('/denominations');
 
   }
