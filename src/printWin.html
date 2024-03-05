@@ -68,7 +68,7 @@
 
       ipcRenderer.on('PreparePrintReport', (event, printObject) => {
 
-         alert("data"+printObject);
+       //  alert("data"+printObject);
          ipcRenderer.send('PrintReceipt');
 
          const namelookup = [];
@@ -208,7 +208,7 @@
             printTimeStamp();
             printEmployeeName();
             for (let data in tableData) {
-                 alert("data.data[0]"+JSON.stringify(tableData[data]));
+             //    alert("data.data[0]"+JSON.stringify(tableData[data]));
                printTable(tableData[data].name, tableData[data].data[0], tableData[data].data);
             }
             ipcRenderer.send('EODPrintReceipt', printObject.name);
@@ -222,7 +222,7 @@
             printTimeStamp();
             printEmployeeName();
             for (let data in tableData) {
-               alert("data.data[0]"+JSON.stringify(tableData[data]));
+             //  alert("data.data[0]"+JSON.stringify(tableData[data]));
                printTable(tableData[data].name, tableData[data].data[0], tableData[data].data);
             }
             ipcRenderer.send('EmployeeReportPrintReceipt', printObject.name);

@@ -19,6 +19,7 @@ export class DenominationsComponent implements OnInit {
   public truckChangeRequestDto:TruckChangeRequestDto=new TruckChangeRequestDto();
   sum: number = 0;
   userId: any;
+  insetbillDisconnect: any;
   userName: any;
   pageload: boolean = true;
   transactionNumber:string;
@@ -200,6 +201,11 @@ loaderHide(){
             this.isSendRequest=false;
              data.name=localStorage.getItem('userName');
               this.ipcService.send("message",data);
+              this.service.InsertBill_Disconnect().subscribe(data =>{
+                console.log(data);
+                this.insetbillDisconnect = data;
+                console.log("insert bill validator"+this.insetbillDisconnect);
+              })
               this.router.navigateByUrl('/homenav'); 
               this.loaderHide();
            },

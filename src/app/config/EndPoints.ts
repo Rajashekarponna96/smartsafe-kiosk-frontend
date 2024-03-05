@@ -178,7 +178,7 @@ export class EndPoints {
     }
 
     public static  disconnect_bill_insertion() {
-        return this.BASE_URL + "/disconnect-bill-insertion";
+        return this.BASE_URL + "/stop-bill-insertion";
     }
 
 

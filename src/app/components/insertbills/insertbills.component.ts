@@ -72,7 +72,7 @@ export class InsertbillsComponent implements OnInit {
     this.transactionNumber=data.transactionNumber;
         this.service.insertBillsReportDataa(this.transactionNumber,storeName).subscribe(data=>{
           data.name=localStorage.getItem('userName');
-           this.ipcService.send("message",data);
+          // this.ipcService.send("message",data);
            this.service.InsertBill_Disconnect().subscribe(data =>{
             console.log(data);
             this.insetbillDisconnect = data;
